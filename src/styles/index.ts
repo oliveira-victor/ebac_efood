@@ -12,16 +12,24 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: ${colors.background};
     }
+
+    .container {
+        width: 1024px;
+        margin: 0 auto;
+    }
 `
 
 export const PageWrapper = styled.div`
-    width: 1920px;
+    max-width: 1920px;
     margin: 0 auto;
 `
 
-export const Container = styled.div`
-    width: 1024px;
-    margin: 0 auto;
+export const Button = styled.button`
+    font-size: 12px;
+    font-weight: 700;
+    background-color: ${colors.primaryColor};
+    color: ${colors.secondaryColor};
+    border: none;
 `
 
 export default GlobalStyle
