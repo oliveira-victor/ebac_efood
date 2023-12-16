@@ -3,14 +3,28 @@ import * as S from './styles'
 
 const Menu = () => {
     return (
-        <S.Menu className='container'>
-            <MenuItem />
-            <MenuItem />
-            <MenuItem />
-            <MenuItem />
-            <MenuItem />
-            <MenuItem />
-        </S.Menu>
+        <section className='container'>
+            <S.MenuList>
+                <li>
+                <MenuItem />
+                </li>
+                <li>
+                <MenuItem />
+                </li>
+                <li>
+                <MenuItem />
+                </li>
+                <li>
+                <MenuItem />
+                </li>
+                <li>
+                <MenuItem />
+                </li>
+                <li>
+                <MenuItem />
+                </li>
+            </S.MenuList>
+        </section>
     )
 }
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Menu = styled.section`
+export const MenuList = styled.ul`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;

@@ -13,6 +13,10 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${colors.background};
     }
 
+    ul {
+        list-style: none;
+    }
+
     .container {
         width: 1024px;
         margin: 0 auto;

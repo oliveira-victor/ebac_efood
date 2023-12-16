@@ -56,4 +56,5 @@ export const ItemBtn = styled(Button)`
     margin-bottom: 8px;
     padding: 4px 6px;
     font-size: 14px;
+    cursor: pointer;
 `
