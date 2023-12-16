@@ -7,12 +7,8 @@ export const Header = styled.header`
     background-color: ${colors.secondaryColor};
     background-image: url(${bgImage});
     width: 100%;
-    height: 384px;
+    padding: 40px;
     text-align: center;
-`
-
-export const Title = styled.img`
-    margin-top: 64px;
 `
 
 export const Text = styled.p`

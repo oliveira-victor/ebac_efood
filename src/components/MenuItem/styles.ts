@@ -3,7 +3,7 @@ import { colors } from "../../styles/colors";
 import { Button } from "../../styles";
 
 export const Item = styled.div`
-    width: 472px;
+    max-width: 472px;
     border: 1px solid ${colors.primaryColor};
 `
 
