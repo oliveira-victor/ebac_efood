@@ -4,7 +4,6 @@ import { Button } from "../../styles";
 
 export const Item = styled.div`
     max-width: 472px;
-    border: 1px solid ${colors.primaryColor};
 `
 
 export const ItemImg = styled.div`
@@ -28,6 +27,8 @@ export const Tag = styled(Button)`
 export const ItemInfoContainer = styled.div`
     padding: 8px;
     color: ${colors.primaryColor};
+    border: 1px solid ${colors.primaryColor};
+    border-top: none;
 `
 
 export const ItemHeader = styled.div`
@@ -52,8 +53,6 @@ export const ItemText = styled.p`
 `
 
 export const ItemBtn = styled(Button)`
-    margin-left: 8px;
-    margin-bottom: 8px;
     padding: 4px 6px;
     font-size: 14px;
     cursor: pointer;

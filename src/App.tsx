@@ -1,6 +1,5 @@
 import Footer from "./components/Footer"
-import Header from "./components/Header"
-import Menu from "./components/Menu"
+import Home from "./pages/Home"
 import GlobalStyle, { PageWrapper } from "./styles"
 
 function App() {
@@ -9,8 +8,7 @@ function App() {
     <>
       <GlobalStyle />
       <PageWrapper>
-        <Header />
-        <Menu />
+        <Home />
         <Footer />
       </PageWrapper>
     </>
