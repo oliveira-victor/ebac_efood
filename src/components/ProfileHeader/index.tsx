@@ -7,7 +7,7 @@ const ProfileHeader = () => {
         <S.ProfileHeader>
             <S.ElementsContainer  className='container'>
                 <li>
-                    <span>Restaurantes</span>
+                    <S.HomeLink to='/'>Restaurantes</S.HomeLink>
                 </li>
                 <S.Logo>
                     <img src={logo} alt="Logo eFood" />
