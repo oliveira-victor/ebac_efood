@@ -8,9 +8,10 @@ type Props = {
     title: string
     rating: number
     info: string
+    page: string
 }
 
-const MenuItem = ({ image, tags, title, rating, info }: Props) => {
+const MenuItem = ({ image, tags, title, rating, info, page }: Props) => {
     return (
         <S.Item>
             <S.ItemImg style={{ backgroundImage: `url(${image})` }}>
@@ -29,7 +30,7 @@ const MenuItem = ({ image, tags, title, rating, info }: Props) => {
                 <S.ItemText>
                     {info}
                 </S.ItemText>
-            <S.ItemBtn>Saiba mais</S.ItemBtn>
+            <S.ItemBtn to={page}>Saiba mais</S.ItemBtn>
             </S.ItemInfoContainer>
         </S.Item>
     )

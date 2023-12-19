@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
 import { Button } from "../../styles";
+import { Link } from "react-router-dom";
 
 export const Item = styled.div`
     max-width: 472px;
@@ -26,6 +27,7 @@ export const Tag = styled(Button)`
 
 export const ItemInfoContainer = styled.div`
     padding: 8px;
+    padding-bottom: 12px;
     color: ${colors.primaryColor};
     border: 1px solid ${colors.primaryColor};
     border-top: none;
@@ -52,8 +54,13 @@ export const ItemText = styled.p`
     margin-bottom: 8px;
 `
 
-export const ItemBtn = styled(Button)`
+export const ItemBtn = styled(Link)`
+    font-weight: 700;
+    background-color: ${colors.primaryColor};
+    color: ${colors.secondaryColor};
+    border: none;
     padding: 4px 6px;
     font-size: 14px;
     cursor: pointer;
+    text-decoration: none;
 `
