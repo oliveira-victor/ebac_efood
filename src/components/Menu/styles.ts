@@ -5,4 +5,10 @@ export const MenuList = styled.ul`
     grid-template-columns: 1fr 1fr;
     gap: 48px;
     padding: 80px 8px 120px 8px;
+
+    @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `

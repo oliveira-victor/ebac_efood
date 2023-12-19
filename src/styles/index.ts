@@ -18,8 +18,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .container {
-        width: 1024px;
+        max-width: 1024px;
         margin: 0 auto;
+        
+        @media (max-width: 1054px) {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
     }
 `
 

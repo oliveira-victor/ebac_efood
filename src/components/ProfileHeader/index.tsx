@@ -13,7 +13,7 @@ const ProfileHeader = () => {
                     <img src={logo} alt="Logo eFood" />
                 </S.Logo>
                 <S.CartLink>
-                    0 produtos no carrinho
+                    0 produto&#40;s&#41; no carrinho
                 </S.CartLink>
             </S.ElementsContainer>
         </S.ProfileHeader>
