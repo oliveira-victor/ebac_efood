@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
-import { AddBtn } from "../Dish/styles";
+import { ProceedBtn } from "../ActionBtn/styles";
 
 export const PopUp = styled.div`
     width: 100%;
@@ -61,7 +61,7 @@ export const PopUpTitle = styled.h3`
     font-weight: 900;
 `
 
-export const PopUpBtn = styled(AddBtn)`
+export const PopUpBtn = styled(ProceedBtn)`
     margin-top: 16px;
     width: fit-content;
     padding: 4px 6px;

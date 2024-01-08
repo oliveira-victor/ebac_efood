@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
-import { Button } from "../../styles";
 
 export const DishContainer = styled.div`
     max-width: 320px;
@@ -24,15 +23,4 @@ export const DishDescription = styled.p`
     font-weight: 400;
     line-height: 22px;
     margin-top: 8px;
-`
-
-export const AddBtn = styled(Button)`
-    background-color: ${colors.secondaryColor};
-    color: ${colors.primaryColor};
-    font-size: 14px;
-    font-weight: 700;
-    width: 100%;
-    padding: 4px 0;
-    margin-top: 8px;
-    cursor: pointer;
 `

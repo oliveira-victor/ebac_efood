@@ -1,10 +1,11 @@
 import Dish from '../Dish'
-import * as S from './styles'
-
 import dishIgm from '../../assets/images/dish1.png'
 import PopUp from '../PopUp'
 import { useState } from 'react'
 import Cart from '../Cart'
+
+import * as S from './styles'
+
 
 const DishList = () => {
 

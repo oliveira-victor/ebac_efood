@@ -1,3 +1,5 @@
+import ActionBtn from '../ActionBtn'
+
 import * as S from './styles'
 
 type Props = {
@@ -15,9 +17,7 @@ const Dish = ({ image, title, description }: Props) => {
             <S.DishDescription>
                 {description}
             </S.DishDescription>
-            <S.AddBtn>
-                Adicionar ao carrinho
-            </S.AddBtn>
+            <ActionBtn title='Adicionar ao carrinho' />
         </S.DishContainer>
     )
 }

@@ -1,4 +1,8 @@
+import ActionBtn from '../ActionBtn'
+import AddressForm from '../AddressForm'
 import ItemBox from '../ItemBox'
+import PaymentForm from '../PaymentForm'
+import PlacedOrder from '../PlacedOrder'
 import * as S from './styles'
 
 const Cart = () => {
@@ -23,7 +27,13 @@ const Cart = () => {
                     <div>Valor total</div>
                     <div>182,70</div>
                 </S.Total>
-                <S.ProceedBtn>Continuar com a entrega</S.ProceedBtn>
+                <ActionBtn title='Continuar com a entrega' />
+
+                {/* temp: area de teste */}
+                {/* <AddressForm /> */}
+                {/* <PaymentForm /> */}
+                {/* <PlacedOrder /> */}
+                {/* tempo: fim da area de teste */}
             </S.CartContainer>
         </S.Background>
     )

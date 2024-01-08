@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
-import { Button } from "../../styles";
 
 export const Background = styled.div`
     width: 100%;
@@ -35,15 +34,4 @@ export const Total = styled.div`
     font-size: 14px;
     font-weight: 700;
     color: ${colors.secondaryColor};
-`
-
-export const ProceedBtn = styled(Button)`
-    min-height: 24px;
-    width: 100%;
-    margin-top: 16px;
-    background-color: ${colors.secondaryColor};
-    color: ${colors.primaryColor};
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
 `
