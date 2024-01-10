@@ -2,7 +2,6 @@ import Dish from '../Dish'
 import dishIgm from '../../assets/images/dish1.png'
 import PopUp from '../PopUp'
 import { useState } from 'react'
-import Cart from '../Cart'
 
 import * as S from './styles'
 
@@ -13,7 +12,6 @@ const DishList = () => {
 
     return (
         <>
-            <Cart />
             {showPopup ? <PopUp /> : ''}
             <button onClick={() => setShowPopup(!showPopup)}>TEST</button>
             <S.DishList className="container">
