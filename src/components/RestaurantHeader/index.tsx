@@ -2,9 +2,9 @@ import * as S from './styles'
 
 import logo from '../../assets/images/logo.png'
 
-const ProfileHeader = () => {
+const RestaurantHeader = () => {
     return (
-        <S.ProfileHeader>
+        <S.RestaurantHeader>
             <S.ElementsContainer  className='container'>
                 <li>
                     <S.HomeLink to='/'>Restaurantes</S.HomeLink>
@@ -16,8 +16,8 @@ const ProfileHeader = () => {
                     0 produto&#40;s&#41; no carrinho
                 </S.CartLink>
             </S.ElementsContainer>
-        </S.ProfileHeader>
+        </S.RestaurantHeader>
     )
 }
 
-export default ProfileHeader
+export default RestaurantHeader

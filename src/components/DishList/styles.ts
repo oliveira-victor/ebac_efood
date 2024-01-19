@@ -78,20 +78,28 @@ export const ModalBtn = styled(ProceedBtn)`
 export const DishList = styled.section`
     padding-top: 64px;
     padding-bottom: 120px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 32px;
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 32px;
+    }
 `
 
-export const DishContainer = styled.div`
+export const DishContainer = styled.li`
     max-width: 320px;
     background-color: ${colors.primaryColor};
     padding: 8px;
     color: ${colors.secondaryColor};
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     img {
         width: 100%;
+        height: 167px;
+        object-fit: cover;
     }
 `
 

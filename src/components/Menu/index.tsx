@@ -9,21 +9,25 @@ const Menu = () => {
     const [restaurants, setRestaurants] = useState<EfoodData[]>([])
 
     useEffect(() => {
-        fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+        fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes`)
             .then(res => res.json())
             .then(res => setRestaurants(res))
     }, [])
+
+    if (!restaurants) {
+        return <h3>Carregando...</h3>
+    }
 
     return (
         <section className='container'>
             <S.MenuList>
                 {restaurants.map((restaurant) => (
-                    <li>
+                    <li key={restaurant.id}>
                         <S.Item>
                             <S.ItemImg style={{ backgroundImage: `url(${restaurant.capa})` }}>
                                 <S.ItemTags>
                                     {restaurant.destacado && <S.Tag>Destaque da semana</S.Tag>}
-                                    <S.Tag>Japonesa</S.Tag>
+                                    <S.Tag>{restaurant.tipo}</S.Tag>
                                 </S.ItemTags>
                             </S.ItemImg>
                             <S.ItemInfoContainer>
@@ -39,7 +43,7 @@ const Menu = () => {
                                         {restaurant.descricao}
                                     </S.ItemText>
                                 </div>
-                                <S.ItemBtn to=''>Saiba mais</S.ItemBtn>
+                                <S.ItemBtn to={`/restaurant/${restaurant.id}`}>Saiba mais</S.ItemBtn>
                             </S.ItemInfoContainer>
                         </S.Item>
                     </li>

@@ -1,15 +1,15 @@
 import DishList from "../../components/DishList"
 import Hero from "../../components/Hero"
-import ProfileHeader from "../../components/ProfileHeader"
+import RestaurantHeader from "../../components/RestaurantHeader"
 
-const Profile = () => {
+const Restaurant = () => {
     return (
         <>
-            <ProfileHeader />
+            <RestaurantHeader />
             <Hero />
             <DishList />
         </>
     )
 }
 
-export default Profile
+export default Restaurant

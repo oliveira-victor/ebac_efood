@@ -36,6 +36,7 @@ export const Tag = styled(Button)`
     margin-left: 8px;
     font-size: 12px;
     padding: 6px 4px;
+    text-transform: capitalize;
 `
 
 export const ItemInfoContainer = styled.div`

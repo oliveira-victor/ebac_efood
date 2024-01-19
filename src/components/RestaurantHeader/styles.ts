@@ -4,7 +4,7 @@ import bgImage from '../../assets/images/pattern.png'
 import { colors } from "../../styles/colors";
 import { Link } from "react-router-dom";
 
-export const ProfileHeader = styled.header`
+export const RestaurantHeader = styled.header`
     background-color: ${colors.secondaryColor};
     background-image: url(${bgImage});
     padding: 40px 0 66px;

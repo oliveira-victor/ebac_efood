@@ -6,18 +6,21 @@ import { ProceedBtn } from '../../styles'
 import * as S from './styles'
 
 import close from '../../assets/images/close.png'
+import { useParams } from 'react-router-dom'
 
 const DishList = () => {
 
-    const [dishes, setDishes] = useState<EfoodData[]>([])
+    const { id } = useParams()
+
+    const [restaurant, setRestaurant] = useState<EfoodData>()
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
     useEffect(() => {
-        fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+        fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
             .then(res => res.json())
-            .then(res => setDishes(res))
-    }, [])
+            .then(res => setRestaurant(res))
+    }, [id])
 
     return (
         <>
@@ -40,46 +43,20 @@ const DishList = () => {
             </S.Modal>
 
             <S.DishList className="container">
-                {dishes.map((dish) => (
-                    <S.DishContainer>
-                        <img src={dish.foto} alt={dish.titulo} />
-                        <S.DishTitle>{dish.titulo}</S.DishTitle>
-                        <S.DishDescription>
-                            {dish.descricao}
-                        </S.DishDescription>
-                        <ProceedBtn onClick={() => setModalIsOpen(true)}>Adicionar ao carrinho</ProceedBtn>
-                    </S.DishContainer>
-                ))}
-                {/* <Dish
-                    image={dishIgm}
-                    title='Pizza Marguerita'
-                    description='A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-                />
-                <Dish
-                    image={dishIgm}
-                    title='Pizza Marguerita'
-                    description='A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-                />
-                <Dish
-                    image={dishIgm}
-                    title='Pizza Marguerita'
-                    description='A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-                />
-                <Dish
-                    image={dishIgm}
-                    title='Pizza Marguerita'
-                    description='A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-                />
-                <Dish
-                    image={dishIgm}
-                    title='Pizza Marguerita'
-                    description='A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-                />
-                <Dish
-                    image={dishIgm}
-                    title='Pizza Marguerita'
-                    description='A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-                /> */}
+                <ul>
+                    {restaurant?.cardapio.map((item) => (
+                        <S.DishContainer key={item.id}>
+                            <div>
+                                <img src={item.foto} alt={item.nome} />
+                                <S.DishTitle>{item.nome}</S.DishTitle>
+                                <S.DishDescription>
+                                    {item.descricao.slice(0, 100) + '...'}
+                                </S.DishDescription>
+                            </div>
+                            <ProceedBtn onClick={() => setModalIsOpen(true)}>Adicionar ao carrinho</ProceedBtn>
+                        </S.DishContainer>
+                    ))}
+                </ul>
             </S.DishList>
         </>
     )
