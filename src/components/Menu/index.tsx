@@ -1,69 +1,49 @@
-import MenuItem from '../MenuItem'
 import * as S from './styles'
+import { useEffect, useState } from 'react'
+import { EfoodData } from '../../App'
 
-import prato1 from '../../assets/images/prato1.png'
-import prato2 from '../../assets/images/prato2.png'
+import star from '../../assets/images/star.png'
 
 const Menu = () => {
+
+    const [restaurants, setRestaurants] = useState<EfoodData[]>([])
+
+    useEffect(() => {
+        fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+            .then(res => res.json())
+            .then(res => setRestaurants(res))
+    }, [])
+
     return (
         <section className='container'>
             <S.MenuList>
-                <li>
-                    <MenuItem
-                        image={prato1}
-                        tags={['Destaque da semana', 'Japonesa']}
-                        title='Hioki Sushi'
-                        rating={4.9}
-                        info='Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!'
-                        page='/profile'
-                    />
-                </li>
-                <li>
-                    <MenuItem image={prato2}
-                        tags={['Italiana']}
-                        title='La Dolce Vita Trattoria'
-                        rating={4.6}
-                        info='A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!'
-                        page='/profile'
-                    />
-                </li>
-                <li>
-                    <MenuItem image={prato2}
-                        tags={['Italiana']}
-                        title='La Dolce Vita Trattoria'
-                        rating={4.6}
-                        info='A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!'
-                        page='/profile'
-                    />
-                </li>
-                <li>
-                    <MenuItem image={prato2}
-                        tags={['Italiana']}
-                        title='La Dolce Vita Trattoria'
-                        rating={4.6}
-                        info='A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!'
-                        page='/profile'
-                    />
-                </li>
-                <li>
-                    <MenuItem image={prato2}
-                        tags={['Italiana']}
-                        title='La Dolce Vita Trattoria'
-                        rating={4.6}
-                        info='A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!'
-                        page='/profile'
-                    />
-                </li>
-                <li>
-                    <MenuItem image={prato2}
-                        tags={['Italiana']}
-                        title='La Dolce Vita Trattoria'
-                        rating={4.6}
-                        info='A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!'
-                        page='/profile'
-                    />
-                </li>
-
+                {restaurants.map((restaurant) => (
+                    <li>
+                        <S.Item>
+                            <S.ItemImg style={{ backgroundImage: `url(${restaurant.capa})` }}>
+                                <S.ItemTags>
+                                    {restaurant.destacado && <S.Tag>Destaque da semana</S.Tag>}
+                                    <S.Tag>Japonesa</S.Tag>
+                                </S.ItemTags>
+                            </S.ItemImg>
+                            <S.ItemInfoContainer>
+                                <div>
+                                    <S.ItemHeader>
+                                        <h3>{restaurant.titulo}</h3>
+                                        <div>
+                                            <span>{restaurant.avaliacao}</span>
+                                            <img src={star} alt="Ícone estrela" />
+                                        </div>
+                                    </S.ItemHeader>
+                                    <S.ItemText>
+                                        {restaurant.descricao}
+                                    </S.ItemText>
+                                </div>
+                                <S.ItemBtn to=''>Saiba mais</S.ItemBtn>
+                            </S.ItemInfoContainer>
+                        </S.Item>
+                    </li>
+                ))}
             </S.MenuList>
         </section>
     )

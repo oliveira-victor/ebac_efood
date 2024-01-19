@@ -4,6 +4,25 @@ import Footer from "./components/Footer"
 import GlobalStyle, { PageWrapper } from "./styles"
 import Pages from './routes'
 
+export type EfoodData = {
+  id: number
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: number
+  descricao: string
+  capa: string
+  cardapio: [
+    {
+      foto: string
+      preco: number
+      id: number
+      descricao: string
+      porcao: string
+    }
+  ]
+}
+
 function App() {
 
   return (
