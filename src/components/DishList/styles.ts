@@ -2,6 +2,47 @@ import styled from "styled-components";
 import { colors } from "../../styles/colors";
 import { ProceedBtn } from "../../styles";
 
+export const DishList = styled.section`
+    padding-top: 64px;
+    padding-bottom: 120px;
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 32px;
+    }
+`
+
+export const DishContainer = styled.li`
+    max-width: 320px;
+    background-color: ${colors.primaryColor};
+    padding: 8px;
+    color: ${colors.secondaryColor};
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    img {
+        width: 100%;
+        height: 167px;
+        object-fit: cover;
+    }
+`
+
+export const DishTitle = styled.h4`
+    font-size: 16px;
+    font-weight: 900;
+    margin-top: 8px;
+`
+
+export const DishDescription = styled.p`
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-top: 8px;
+`
+
 export const Modal = styled.div`
     width: 100%;
     height: 100%;
@@ -46,6 +87,7 @@ export const ContentBox = styled.div`
 
     img {
         max-width: 280px;
+        object-fit: cover;
     }
 
     p, span {
@@ -54,6 +96,12 @@ export const ContentBox = styled.div`
         line-height: 22px;
         margin-top: 16px;
         display: block;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     button {
@@ -73,45 +121,4 @@ export const ModalBtn = styled(ProceedBtn)`
     margin-top: 16px;
     width: fit-content;
     padding: 4px 6px;
-`
-
-export const DishList = styled.section`
-    padding-top: 64px;
-    padding-bottom: 120px;
-
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 32px;
-    }
-`
-
-export const DishContainer = styled.li`
-    max-width: 320px;
-    background-color: ${colors.primaryColor};
-    padding: 8px;
-    color: ${colors.secondaryColor};
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    img {
-        width: 100%;
-        height: 167px;
-        object-fit: cover;
-    }
-`
-
-export const DishTitle = styled.h4`
-    font-size: 16px;
-    font-weight: 900;
-    margin-top: 8px;
-`
-
-export const DishDescription = styled.p`
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
-    margin-top: 8px;
 `

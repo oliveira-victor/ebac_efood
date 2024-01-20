@@ -1,12 +1,20 @@
 import { useEffect, useState } from 'react'
-import dishIgm from '../../assets/images/dish1.png'
 import { EfoodData } from '../../App'
-import { ProceedBtn } from '../../styles'
+import { useParams } from 'react-router-dom'
 
+import { ProceedBtn } from '../../styles'
 import * as S from './styles'
 
 import close from '../../assets/images/close.png'
-import { useParams } from 'react-router-dom'
+
+type ModalState = {
+    isVisible: boolean
+    image: string
+    title: string
+    description: string
+    portion: string
+    price: number
+}
 
 const DishList = () => {
 
@@ -14,7 +22,25 @@ const DishList = () => {
 
     const [restaurant, setRestaurant] = useState<EfoodData>()
 
-    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [modal, setModal] = useState<ModalState>({
+        isVisible: false,
+        image: '',
+        title: '',
+        description: '',
+        portion: '',
+        price: 0
+    })
+
+    const closeModal = () => {
+        setModal({
+            isVisible: false,
+            image: '',
+            title: '',
+            description: '',
+            portion: '',
+            price: 0
+        })
+    }
 
     useEffect(() => {
         fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
@@ -24,24 +50,6 @@ const DishList = () => {
 
     return (
         <>
-            <S.Modal className={modalIsOpen ? 'visible' : ''}>
-                <S.ContentBox>
-                    <S.CloseBtn src={close} alt="Ícone de fechar" onClick={() => setModalIsOpen(false)} />
-                    <img src={dishIgm} alt="Prato" />
-                    <div>
-                        <h3>Pizza Marguerita</h3>
-                        <p>
-                            A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.
-                        </p>
-                        <span>
-                            Serve: de 2 a 3 pessoas
-                        </span>
-                        <S.ModalBtn>Adicionar ao carrinho - R$ 60,90</S.ModalBtn>
-                    </div>
-                </S.ContentBox>
-                <div className='overlay' onClick={() => setModalIsOpen(false)}></div>
-            </S.Modal>
-
             <S.DishList className="container">
                 <ul>
                     {restaurant?.cardapio.map((item) => (
@@ -53,11 +61,38 @@ const DishList = () => {
                                     {item.descricao.slice(0, 100) + '...'}
                                 </S.DishDescription>
                             </div>
-                            <ProceedBtn onClick={() => setModalIsOpen(true)}>Adicionar ao carrinho</ProceedBtn>
+                            <ProceedBtn onClick={() => setModal({
+                                isVisible: true,
+                                image: item.foto,
+                                title: item.nome,
+                                description: item.descricao,
+                                portion: item.porcao,
+                                price: item.preco
+                            })}>Adicionar ao carrinho</ProceedBtn>
                         </S.DishContainer>
                     ))}
                 </ul>
             </S.DishList>
+
+            <S.Modal className={modal.isVisible ? 'visible' : ''}>
+                <S.ContentBox>
+                    <S.CloseBtn src={close} alt="Ícone de fechar" onClick={closeModal} />
+                    <img src={modal.image} alt={modal.title} />
+                    <div>
+                        <div>
+                            <h3>{modal.title}</h3>
+                            <p>
+                                {modal.description}
+                            </p>
+                            <span>
+                                Serve: de {modal.portion}
+                            </span>
+                        </div>
+                        <S.ModalBtn>Adicionar ao carrinho - R$ {modal.price}</S.ModalBtn>
+                    </div>
+                </S.ContentBox>
+                <div className='overlay' onClick={closeModal}></div>
+            </S.Modal>
         </>
     )
 }
