@@ -1,5 +1,4 @@
 import { ButtonsContainer, DoubleGrid, Form, FormTitle, Input, Label } from '../../styles'
-import ActionBtn from '../ActionBtn'
 
 import * as S from './styles'
 
@@ -30,8 +29,8 @@ const PaymentForm = () => {
                 </div>
             </DoubleGrid>
             <ButtonsContainer>
-                <ActionBtn title='Finalizar pagamento' />
-                <ActionBtn title='Voltar para a edição de endereço' />
+                <button title='Finalizar pagamento' />
+                <button title='Voltar para a edição de endereço' />
             </ButtonsContainer>
         </Form>
     )

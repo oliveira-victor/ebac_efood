@@ -1,4 +1,3 @@
-import ActionBtn from '../ActionBtn'
 import ItemBox from '../ItemBox'
 import * as S from './styles'
 
@@ -24,7 +23,7 @@ const Cart = () => {
                     <div>Valor total</div>
                     <div>182,70</div>
                 </S.Total>
-                <ActionBtn title='Continuar com a entrega' />
+                <button title='Continuar com a entrega' />
             </S.CartContainer>
         </S.Background>
     )

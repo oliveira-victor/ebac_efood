@@ -1,5 +1,4 @@
 import { FormTitle } from "../../styles"
-import ActionBtn from "../ActionBtn"
 
 import * as S from './styles'
 
@@ -19,7 +18,7 @@ const PlacedOrder = () => {
             <S.Paragraph>
                 Esperamos que desfrute de uma deliciosa e agradável experiência gastronômica. Bom apetite!
             </S.Paragraph>
-            <ActionBtn title="Concluir" />
+            <button title="Concluir" />
         </>
     )
 }
