@@ -16,4 +16,9 @@ export const Text = styled.p`
     font-weight: 900;
     color: ${colors.primaryColor};
     margin-top: 138px;
+
+    @media (max-width: 767px) {
+        font-size: 24px;
+        margin-top: 50px;
+    }
 `

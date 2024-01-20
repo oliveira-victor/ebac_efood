@@ -45,7 +45,7 @@ export const ItemInfoContainer = styled.div`
     color: ${colors.primaryColor};
     border: 1px solid ${colors.primaryColor};
     border-top: none;
-    height: 204px;
+    min-height: 204px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

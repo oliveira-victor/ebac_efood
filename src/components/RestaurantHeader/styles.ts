@@ -17,6 +17,12 @@ export const ElementsContainer = styled.ul`
     color: ${colors.primaryColor};
     font-size: 18px;
     font-weight: 900;
+
+    @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 `
 
 export const HomeLink = styled(Link)`

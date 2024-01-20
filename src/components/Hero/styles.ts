@@ -7,6 +7,10 @@ export const Banner = styled.section`
     padding: 25px 0 32px 0;
     color: ${colors.neutral};
     font-size: 32px;
+
+    @media (max-width: 767px) {
+        font-size: 24px;
+    }
 `
 
 export const BannerContainer = styled.div`
