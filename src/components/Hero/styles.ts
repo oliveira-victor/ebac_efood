@@ -1,10 +1,7 @@
 import styled from "styled-components";
-
-import hero from '../../assets/images/hero.png'
 import { colors } from "../../styles/colors";
 
 export const Banner = styled.section`
-    background-image: url(${hero});
     background-size: cover;
     height: 280px;
     padding: 25px 0 32px 0;
