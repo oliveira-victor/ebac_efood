@@ -1,8 +1,10 @@
+import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
 import Footer from "./components/Footer"
 import GlobalStyle, { PageWrapper } from "./styles"
 import Pages from './routes'
+import { store } from './store'
 
 export type EfoodData = {
   id: number
@@ -27,7 +29,7 @@ export type EfoodData = {
 function App() {
 
   return (
-    <>
+    <Provider store={store}>
       <BrowserRouter>
         <GlobalStyle />
         <PageWrapper>
@@ -35,7 +37,7 @@ function App() {
           <Footer />
         </PageWrapper>
       </BrowserRouter>
-    </>
+    </Provider>
   )
 }
 

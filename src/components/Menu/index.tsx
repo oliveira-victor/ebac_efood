@@ -3,25 +3,28 @@ import { useEffect, useState } from 'react'
 import { EfoodData } from '../../App'
 
 import star from '../../assets/images/star.png'
+import { useGetRestaurantsQuery } from '../../services/api'
 
 const Menu = () => {
 
-    const [restaurants, setRestaurants] = useState<EfoodData[]>([])
+    const { data: restaurants, isLoading } = useGetRestaurantsQuery<EfoodData[]>()
+
+    /* const [restaurants, setRestaurants] = useState<EfoodData[]>([])
 
     useEffect(() => {
         fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes`)
             .then(res => res.json())
             .then(res => setRestaurants(res))
-    }, [])
+    }, []) */
 
-    if (!restaurants) {
+    if (!restaurants)  {
         return <h3>Carregando...</h3>
     }
 
     return (
         <section className='container'>
             <S.MenuList>
-                {restaurants.map((restaurant) => (
+                {restaurants.map((restaurant: EfoodData) => (
                     <li key={restaurant.id}>
                         <S.Item>
                             <S.ItemImg style={{ backgroundImage: `url(${restaurant.capa})` }}>

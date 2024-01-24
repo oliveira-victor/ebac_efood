@@ -3,6 +3,7 @@ import { EfoodData } from '../../App'
 import { useParams } from 'react-router-dom'
 
 import { ProceedBtn } from '../../styles'
+import { useGetRestaurantIdQuery } from '../../services/api'
 import * as S from './styles'
 
 import close from '../../assets/images/close.png'
@@ -16,11 +17,19 @@ type ModalState = {
     price: number
 }
 
+export const formataPreco = (preco = 0) => {
+    return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    }).format(preco)
+}
+
 const DishList = () => {
 
     const { id } = useParams()
+    const { data: restaurant, isLoading } = useGetRestaurantIdQuery(id!)
 
-    const [restaurant, setRestaurant] = useState<EfoodData>()
+    /* const [restaurant, setRestaurant] = useState<EfoodData>() */
 
     const [modal, setModal] = useState<ModalState>({
         isVisible: false,
@@ -42,11 +51,11 @@ const DishList = () => {
         })
     }
 
-    useEffect(() => {
+    /* useEffect(() => {
         fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
             .then(res => res.json())
             .then(res => setRestaurant(res))
-    }, [id])
+    }, [id]) */
 
     return (
         <>
@@ -88,7 +97,7 @@ const DishList = () => {
                                 Serve: de {modal.portion}
                             </span>
                         </div>
-                        <S.ModalBtn>Adicionar ao carrinho - R$ {modal.price}</S.ModalBtn>
+                        <S.ModalBtn>Adicionar ao carrinho - {formataPreco(modal.price)}</S.ModalBtn>
                     </div>
                 </S.ContentBox>
                 <div className='overlay' onClick={closeModal}></div>
