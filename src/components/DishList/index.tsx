@@ -7,6 +7,8 @@ import { useGetRestaurantIdQuery } from '../../services/api'
 import * as S from './styles'
 
 import close from '../../assets/images/close.png'
+import { useDispatch } from 'react-redux'
+import { add } from '../../store/reducers/cart'
 
 type ModalState = {
     isVisible: boolean
@@ -17,6 +19,10 @@ type ModalState = {
     price: number
 }
 
+type Props = {
+    dish: EfoodData
+}
+
 export const formataPreco = (preco = 0) => {
     return new Intl.NumberFormat('pt-BR', {
         style: 'currency',
@@ -24,10 +30,16 @@ export const formataPreco = (preco = 0) => {
     }).format(preco)
 }
 
-const DishList = () => {
+const DishList = ({ dish }: Props) => {
+
+    const dispatch = useDispatch()
+
+    const addToCart = () => {
+        dispatch(add(dish))
+    }
 
     const { id } = useParams()
-    const { data: restaurant, isLoading } = useGetRestaurantIdQuery(id!)
+    const { data: restaurant } = useGetRestaurantIdQuery(id!)
 
     /* const [restaurant, setRestaurant] = useState<EfoodData>() */
 
@@ -97,7 +109,7 @@ const DishList = () => {
                                 Serve: de {modal.portion}
                             </span>
                         </div>
-                        <S.ModalBtn>Adicionar ao carrinho - {formataPreco(modal.price)}</S.ModalBtn>
+                        <S.ModalBtn onClick={addToCart}>Adicionar ao carrinho - {formataPreco(modal.price)}</S.ModalBtn>
                     </div>
                 </S.ContentBox>
                 <div className='overlay' onClick={closeModal}></div>
