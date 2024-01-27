@@ -36,6 +36,7 @@ export const Logo = styled.li`
     text-align: center;
 `
 
-export const CartLink = styled.li`
+export const CartBtn = styled.li`
     text-align: end;
+    cursor: pointer;
 `

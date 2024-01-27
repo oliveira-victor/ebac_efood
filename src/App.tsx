@@ -5,6 +5,7 @@ import Footer from "./components/Footer"
 import GlobalStyle, { PageWrapper } from "./styles"
 import Pages from './routes'
 import { store } from './store'
+import Cart from './components/Cart'
 
 export type EfoodData = {
   id: number
@@ -35,6 +36,7 @@ function App() {
         <PageWrapper>
           <Pages />
           <Footer />
+          <Cart />
         </PageWrapper>
       </BrowserRouter>
     </Provider>
