@@ -2,10 +2,11 @@ import * as S from './styles'
 import { EfoodData } from '../../App'
 import { useGetRestaurantsQuery } from '../../services/api'
 import Restaurant from '../restaurant'
+import { useEffect, useState } from 'react'
 
-const Menu = () => {
+const RestaurantsList = () => {
 
-    const { data: restaurants, isLoading } = useGetRestaurantsQuery()
+    const { data: restaurants } = useGetRestaurantsQuery()
 
     /* const [restaurants, setRestaurants] = useState<EfoodData[]>([])
 
@@ -15,7 +16,7 @@ const Menu = () => {
             .then(res => setRestaurants(res))
     }, []) */
 
-    if (!restaurants || isLoading)  {
+    if (!restaurants)  {
         return <h3>Carregando...</h3>
     }
 
@@ -40,4 +41,4 @@ const Menu = () => {
     )
 }
 
-export default Menu
+export default RestaurantsList

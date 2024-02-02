@@ -4,6 +4,9 @@ import { close, remove } from '../../store//reducers/cart'
 import ItemBox from '../ItemBox'
 import * as S from './styles'
 import { formataPreco } from '../DishList'
+import deleteBtn from '../../assets/images/deleteBtn.png'
+import foodPic from '../../assets/images/dish1.png'
+import { EfoodData } from '../../App'
 
 const Cart = () => {
     const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -23,14 +26,16 @@ const Cart = () => {
             <S.CartOverlay onClick={closeCart}></S.CartOverlay>
             <S.CartContainer>
                 <S.ItemsList>
-                    {items.map((item) => (
-                        <ItemBox
-                            key={item.id}
-                            title={item.titulo}
-                            price='10,00'
-                            removeItem={removeItem}
-                        />
-                    ))}
+                    {/* {items.map((item) => (
+                        <S.ItemBox>
+                        <S.ItemImg style={{ backgroundImage: `url(${foodPic})` }}></S.ItemImg>
+                        <div>
+                            <S.ItemTitle>{item.nome}</S.ItemTitle> 
+                            <S.ItemPrice>{item.preco}</S.ItemPrice>
+                            <img src={deleteBtn} onClick={removeItem} alt="Botão de lixeira" title='Remover item do carrinho' />
+                        </div>
+                    </S.ItemBox>
+                    ))} */}
                 </S.ItemsList>
                 <S.Total>
                     <div>Valor total</div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { EfoodData } from '../../App'
+import { Cardapio, EfoodData } from '../../App'
 import { useParams } from 'react-router-dom'
 
 import { ProceedBtn } from '../../styles'
@@ -7,8 +7,9 @@ import { useGetRestaurantIdQuery } from '../../services/api'
 import * as S from './styles'
 
 import close from '../../assets/images/close.png'
-import { useDispatch } from 'react-redux'
-import { add } from '../../store/reducers/cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
+import { RootReducer } from '../../store'
 
 type ModalState = {
     isVisible: boolean
@@ -20,7 +21,7 @@ type ModalState = {
 }
 
 type Props = {
-    dish: EfoodData
+    data: EfoodData
 }
 
 export const formataPreco = (preco = 0) => {
@@ -30,16 +31,22 @@ export const formataPreco = (preco = 0) => {
     }).format(preco)
 }
 
-const DishList = ({ dish }: Props) => {
+const DishList = ({ data }: Props) => {
+
+    const { items } = useSelector((state: RootReducer) => state.cart) //TEMP
 
     const dispatch = useDispatch()
 
     const addToCart = () => {
-        dispatch(add(dish))
+        dispatch(add(data))
+        closeModal()
+        dispatch(open())
+
+        console.log(items) // TEMP
     }
 
-    const { id } = useParams()
-    const { data: restaurant } = useGetRestaurantIdQuery(id!)
+    /* const { id } = useParams()
+    const { data: restaurant } = useGetRestaurantIdQuery(id!) */
 
     /* const [restaurant, setRestaurant] = useState<EfoodData>() */
 
@@ -73,7 +80,7 @@ const DishList = ({ dish }: Props) => {
         <>
             <S.DishList className="container">
                 <ul>
-                    {restaurant?.cardapio.map((item) => (
+                    {data?.cardapio.map((item) => (
                         <S.DishContainer key={item.id}>
                             <div>
                                 <img src={item.foto} alt={item.nome} />

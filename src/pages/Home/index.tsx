@@ -1,11 +1,11 @@
 import Header from "../../components/Header"
-import Menu from "../../components/RestaurantsList"
+import RestaurantsList from "../../components/RestaurantsList"
 
 const Home = () => {
     return (
         <>
             <Header />
-            <Menu />
+            <RestaurantsList />
         </>
     )
 }
