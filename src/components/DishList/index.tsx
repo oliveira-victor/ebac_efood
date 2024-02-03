@@ -13,6 +13,7 @@ import { RootReducer } from '../../store'
 
 type ModalState = {
     isVisible: boolean
+    id: number
     image: string
     title: string
     description: string
@@ -33,16 +34,12 @@ export const formataPreco = (preco = 0) => {
 
 const DishList = ({ data }: Props) => {
 
-    const { items } = useSelector((state: RootReducer) => state.cart) //TEMP
-
     const dispatch = useDispatch()
 
-    const addToCart = () => {
-        dispatch(add(data))
+    const addToCart = (modal: EfoodData) => {
+        dispatch(add(modal))
         closeModal()
         dispatch(open())
-
-        console.log(items) // TEMP
     }
 
     /* const { id } = useParams()
@@ -52,6 +49,7 @@ const DishList = ({ data }: Props) => {
 
     const [modal, setModal] = useState<ModalState>({
         isVisible: false,
+        id: 0,
         image: '',
         title: '',
         description: '',
@@ -62,6 +60,7 @@ const DishList = ({ data }: Props) => {
     const closeModal = () => {
         setModal({
             isVisible: false,
+            id: 0,
             image: '',
             title: '',
             description: '',
@@ -91,6 +90,7 @@ const DishList = ({ data }: Props) => {
                             </div>
                             <ProceedBtn onClick={() => setModal({
                                 isVisible: true,
+                                id: item.id,
                                 image: item.foto,
                                 title: item.nome,
                                 description: item.descricao,
@@ -116,7 +116,7 @@ const DishList = ({ data }: Props) => {
                                 Serve: de {modal.portion}
                             </span>
                         </div>
-                        <S.ModalBtn onClick={addToCart}>Adicionar ao carrinho - {formataPreco(modal.price)}</S.ModalBtn>
+                        <S.ModalBtn onClick={() => addToCart(modal)}>Adicionar ao carrinho - {formataPreco(modal.price)}</S.ModalBtn>
                     </div>
                 </S.ContentBox>
                 <div className='overlay' onClick={closeModal}></div>

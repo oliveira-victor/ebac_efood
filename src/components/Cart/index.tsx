@@ -26,16 +26,16 @@ const Cart = () => {
             <S.CartOverlay onClick={closeCart}></S.CartOverlay>
             <S.CartContainer>
                 <S.ItemsList>
-                    {/* {items.map((item) => (
-                        <S.ItemBox>
+                    {items.map((item) => (
+                        <S.ItemBox key={item.id}>
                         <S.ItemImg style={{ backgroundImage: `url(${foodPic})` }}></S.ItemImg>
                         <div>
-                            <S.ItemTitle>{item.nome}</S.ItemTitle> 
-                            <S.ItemPrice>{item.preco}</S.ItemPrice>
+                            <S.ItemTitle>{item.titulo}</S.ItemTitle> 
+                            <S.ItemPrice>preço</S.ItemPrice>
                             <img src={deleteBtn} onClick={removeItem} alt="Botão de lixeira" title='Remover item do carrinho' />
                         </div>
                     </S.ItemBox>
-                    ))} */}
+                    ))}
                 </S.ItemsList>
                 <S.Total>
                     <div>Valor total</div>
