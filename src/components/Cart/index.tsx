@@ -17,22 +17,22 @@ const Cart = () => {
         dispatch(close())
     }
 
-    const removeItem = () => {
-        console.log('remover')
+    const removeItem = (id: number) => {
+        dispatch(remove(id))
     }
 
     return (
         <S.Background className={isOpen ? 'isOpen' : ''}>
             <S.CartOverlay onClick={closeCart}></S.CartOverlay>
             <S.CartContainer>
-                <S.ItemsList>
+                <S.ItemsList className={items.length >= 7 ? 'addScroll' : ''}>
                     {items.map((item) => (
                         <S.ItemBox key={item.id}>
-                        <S.ItemImg style={{ backgroundImage: `url(${foodPic})` }}></S.ItemImg>
+                        <S.ItemImg style={{ backgroundImage: `url(${item.image})` }}></S.ItemImg>
                         <div>
-                            <S.ItemTitle>{item.titulo}</S.ItemTitle> 
-                            <S.ItemPrice>preço</S.ItemPrice>
-                            <img src={deleteBtn} onClick={removeItem} alt="Botão de lixeira" title='Remover item do carrinho' />
+                            <S.ItemTitle>{item.title}</S.ItemTitle>
+                            <S.ItemPrice>{formataPreco(item.price)}</S.ItemPrice>
+                            <img src={deleteBtn} onClick={() => removeItem(item.id)} alt="Botão de lixeira" title='Remover item do carrinho' />
                         </div>
                     </S.ItemBox>
                     ))}

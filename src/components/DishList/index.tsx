@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { add, open } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
 
-type ModalState = {
+export type ModalState = {
     isVisible: boolean
     id: number
     image: string
@@ -33,6 +33,15 @@ export const formataPreco = (preco = 0) => {
 }
 
 const DishList = ({ data }: Props) => {
+
+    /* const [currentMenu, setCurrentMenu] = useState<Cardapio>({
+        foto: '',
+        preco: 0,
+        id: 0,
+        nome: '',
+        descricao: '',
+        porcao: '',
+    }) */
 
     const dispatch = useDispatch()
 

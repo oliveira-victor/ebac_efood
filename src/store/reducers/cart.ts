@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Cardapio, EfoodData } from '../../App'
+import { ModalState } from '../../components/DishList'
 
 type CartState = {
-    items: EfoodData[]
+    items: ModalState[]
     isOpen: boolean
 }
 
@@ -15,7 +16,7 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        add: (state, action: PayloadAction<EfoodData>) => {
+        add: (state, action: PayloadAction<ModalState>) => {
             const dish = state.items.find(item => item.id === action.payload.id)
 
             if (!dish) {

@@ -26,6 +26,11 @@ const GlobalStyle = createGlobalStyle`
             padding-right: 8px;
         }
     }
+
+    .addScroll {
+        overflow-y: scroll;
+        max-height: 80vh;
+    }
 `
 
 export const PageWrapper = styled.div`
