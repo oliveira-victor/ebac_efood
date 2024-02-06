@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import { Button } from "../../styles";
-import { colors } from "../../styles/colors";
-import { Link } from "react-router-dom";
 
 export const MenuList = styled.ul`
     display: grid;
