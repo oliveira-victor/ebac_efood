@@ -1,24 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Cardapio, EfoodData } from '../../App'
-import { useParams } from 'react-router-dom'
 
 import { ProceedBtn } from '../../styles'
-import { useGetRestaurantIdQuery } from '../../services/api'
 import * as S from './styles'
 
 import close from '../../assets/images/close.png'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/cart'
-import { RootReducer } from '../../store'
 
 export type ModalState = {
     isVisible: boolean
-    id: number
-    image: string
-    title: string
-    description: string
-    portion: string
-    price: number
 }
 
 type Props = {
@@ -34,19 +25,30 @@ export const formataPreco = (preco = 0) => {
 
 const DishList = ({ data }: Props) => {
 
-    /* const [currentMenu, setCurrentMenu] = useState<Cardapio>({
+    const dispatch = useDispatch()
+    const [currentItem, setCurrentItem] = useState<Cardapio>({
         foto: '',
         preco: 0,
         id: 0,
         nome: '',
         descricao: '',
-        porcao: '',
-    }) */
+        porcao: ''
+    })
 
-    const dispatch = useDispatch()
+    const openModal = (item: Cardapio) => {
+        setCurrentItem({
+            foto: item.foto,
+            preco: item.preco,
+            id: item.id,
+            nome: item.nome,
+            descricao: item.descricao,
+            porcao: item.porcao
+        })
+        setModal({ isVisible: true })
+    }
 
-    const addToCart = (modal: EfoodData) => {
-        dispatch(add(modal))
+    const addToCart = () => {
+        dispatch(add(currentItem))
         closeModal()
         dispatch(open())
     }
@@ -57,24 +59,12 @@ const DishList = ({ data }: Props) => {
     /* const [restaurant, setRestaurant] = useState<EfoodData>() */
 
     const [modal, setModal] = useState<ModalState>({
-        isVisible: false,
-        id: 0,
-        image: '',
-        title: '',
-        description: '',
-        portion: '',
-        price: 0
+        isVisible: false
     })
 
     const closeModal = () => {
         setModal({
-            isVisible: false,
-            id: 0,
-            image: '',
-            title: '',
-            description: '',
-            portion: '',
-            price: 0
+            isVisible: false
         })
     }
 
@@ -97,15 +87,7 @@ const DishList = ({ data }: Props) => {
                                     {item.descricao.slice(0, 100) + '...'}
                                 </S.DishDescription>
                             </div>
-                            <ProceedBtn onClick={() => setModal({
-                                isVisible: true,
-                                id: item.id,
-                                image: item.foto,
-                                title: item.nome,
-                                description: item.descricao,
-                                portion: item.porcao,
-                                price: item.preco
-                            })}>Adicionar ao carrinho</ProceedBtn>
+                            <ProceedBtn onClick={() => openModal(item)}>Adicionar ao carrinho</ProceedBtn>
                         </S.DishContainer>
                     ))}
                 </ul>
@@ -114,18 +96,18 @@ const DishList = ({ data }: Props) => {
             <S.Modal className={modal.isVisible ? 'visible' : ''}>
                 <S.ContentBox>
                     <S.CloseBtn src={close} alt="Ícone de fechar" onClick={closeModal} />
-                    <img src={modal.image} alt={modal.title} />
+                    <img src={currentItem.foto} alt={currentItem.nome} />
                     <div>
                         <div>
-                            <h3>{modal.title}</h3>
+                            <h3>{currentItem.nome}</h3>
                             <p>
-                                {modal.description}
+                                {currentItem.descricao}
                             </p>
                             <span>
-                                Serve: de {modal.portion}
+                                Serve: de {currentItem.porcao}
                             </span>
                         </div>
-                        <S.ModalBtn onClick={() => addToCart(modal)}>Adicionar ao carrinho - {formataPreco(modal.price)}</S.ModalBtn>
+                        <S.ModalBtn onClick={addToCart}>Adicionar ao carrinho - {formataPreco(currentItem.preco)}</S.ModalBtn>
                     </div>
                 </S.ContentBox>
                 <div className='overlay' onClick={closeModal}></div>

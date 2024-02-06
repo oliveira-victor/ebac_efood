@@ -98,4 +98,11 @@ export const ProceedBtn = styled(Button)`
     cursor: pointer;
 `
 
+export const Paragraph = styled.p`
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.secondaryColor};
+`
+
 export default GlobalStyle
