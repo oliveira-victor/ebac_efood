@@ -2,7 +2,6 @@ import * as S from './styles'
 import { EfoodData } from '../../App'
 import { useGetRestaurantsQuery } from '../../services/api'
 import Restaurant from '../restaurant'
-import { useEffect, useState } from 'react'
 
 const RestaurantsList = () => {
 

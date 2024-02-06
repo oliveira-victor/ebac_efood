@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom'
 import * as S from './styles'
-import { useEffect, useState } from 'react'
-import { EfoodData } from '../../App'
 import { useGetRestaurantIdQuery } from '../../services/api'
 
 const Hero = () => {

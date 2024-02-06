@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Cardapio, EfoodData } from '../App'
+import { EfoodData } from '../App'
 
 const api = createApi({
     baseQuery: fetchBaseQuery({
