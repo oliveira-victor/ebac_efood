@@ -1,7 +1,7 @@
 import * as S from './styles'
-import { EfoodData } from '../../App'
 import { useGetRestaurantsQuery } from '../../services/api'
 import Restaurant from '../restaurant'
+import Loader from '../Loader'
 
 const RestaurantsList = () => {
 
@@ -16,7 +16,7 @@ const RestaurantsList = () => {
     }, []) */
 
     if (!restaurants)  {
-        return <h3>Carregando...</h3>
+        return <Loader />
     }
 
     return (

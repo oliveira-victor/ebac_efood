@@ -7,26 +7,6 @@ import Pages from './routes'
 import { store } from './store'
 import Cart from './components/Cart'
 
-export type Cardapio = {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
-}
-
-export type EfoodData = {
-  id: number
-  titulo: string
-  destacado: boolean
-  tipo: string
-  avaliacao: number
-  descricao: string
-  capa: string
-  cardapio: Cardapio[]
-}
-
 function App() {
 
   return (

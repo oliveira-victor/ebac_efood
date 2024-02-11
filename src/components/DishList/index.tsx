@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Cardapio, EfoodData } from '../../App'
 
 import { ProceedBtn } from '../../styles'
 import * as S from './styles'

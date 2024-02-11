@@ -3,6 +3,7 @@ import DishList from "../../components/DishList"
 import Hero from "../../components/Hero"
 import RestaurantHeader from "../../components/RestaurantHeader"
 import { useGetRestaurantIdQuery } from "../../services/api"
+import Loader from "../../components/Loader"
 
 const Restaurant = () => {
 
@@ -10,7 +11,7 @@ const Restaurant = () => {
     const { data } = useGetRestaurantIdQuery(id!)
 
     if (!data) {
-        return <h3>Carregando...</h3>
+        return <Loader />
     }
 
     return (
