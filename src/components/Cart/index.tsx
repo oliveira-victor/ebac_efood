@@ -6,14 +6,19 @@ import deleteBtn from '../../assets/images/deleteBtn.png'
 import { Paragraph, ProceedBtn } from '../../styles'
 
 import * as S from './styles'
+import { useState } from 'react'
+import PaymentForm from '../PaymentForm'
+import AddressForm from '../AddressForm'
 
 const Cart = () => {
     const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+    const [cartPage, setCartPage] = useState(1)
 
     const dispatch = useDispatch()
 
     const closeCart = () => {
         dispatch(close())
+        setCartPage(1)
     }
 
     const removeItem = (id: number) => {
@@ -30,7 +35,10 @@ const Cart = () => {
         <S.Background className={isOpen ? 'isOpen' : ''}>
             <S.CartOverlay onClick={closeCart}></S.CartOverlay>
             <S.CartContainer>
-                {items.length > 0 ? (
+
+                {items.length === 0 && <Paragraph>Seu carrinho está vazio. Adicione pratos do menu para continuar com seu pedido.</Paragraph>}
+
+                {items.length > 0 && cartPage === 1 ? (
                     <>
                         <S.ItemsList className={items.length >= 7 ? 'addScroll' : ''}>
                             {items.map((item) => (
@@ -48,11 +56,28 @@ const Cart = () => {
                             <div>Valor total</div>
                             <div>{formataPreco(getTotalPrice())}</div>
                         </S.Total>
-                        <ProceedBtn>Continuar com a entrega</ProceedBtn>
+                        <ProceedBtn onClick={() => setCartPage(2)}>Continuar com a entrega</ProceedBtn>
                     </>
                 ) : (
-                    <Paragraph>Seu carrinho está vazio. Adicione pratos do menu para continuar com seu pedido.</Paragraph>
+                    ''
                 )}
+
+                {items.length > 0 && cartPage === 2 ?  (
+                    <>
+                        <AddressForm />
+                        <ProceedBtn onClick={() => setCartPage(3)}>Continuar com o pagamento</ProceedBtn>
+                        <ProceedBtn onClick={() => setCartPage(1)}>Voltar para o carrinho</ProceedBtn>
+                    </>
+                ) : ('')}
+
+                {items.length > 0 && cartPage === 3 ?  (
+                    <>
+                        <PaymentForm />
+                        <ProceedBtn onClick={() => console.log('finalizar')}>Finalizar pagamento</ProceedBtn>
+                        <ProceedBtn onClick={() => setCartPage(2)}>Voltar para a edição de endereço</ProceedBtn>
+                    </>
+                ) : ('')}
+
             </S.CartContainer>
         </S.Background>
     )

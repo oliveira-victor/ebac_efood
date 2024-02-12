@@ -25,8 +25,8 @@ const AddressForm = () => {
                 <Label htmlFor="extra">Complemento (opcional)</Label>
                 <Input type="text" name='extra' />
                 <ButtonsContainer>
-                    <button title='Continuar com o pagamento' />
-                    <button title='Voltar para o carrinho' />
+                    {/* <button title='Continuar com o pagamento' />
+                    <button title='Voltar para o carrinho' /> */}
                 </ButtonsContainer>
             </Form>
         </>
