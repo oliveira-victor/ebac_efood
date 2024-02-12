@@ -1,14 +1,16 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
+
 import { close, remove } from '../../store//reducers/cart'
 import { formataPreco } from '../DishList'
-import deleteBtn from '../../assets/images/deleteBtn.png'
-import { Paragraph, ProceedBtn } from '../../styles'
-
-import * as S from './styles'
-import { useState } from 'react'
 import PaymentForm from '../PaymentForm'
 import AddressForm from '../AddressForm'
+
+import deleteBtn from '../../assets/images/deleteBtn.png'
+
+import { Paragraph, ProceedBtn } from '../../styles'
+import * as S from './styles'
 
 const Cart = () => {
     const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
