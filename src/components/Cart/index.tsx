@@ -81,10 +81,10 @@ const Cart = () => {
             extraInfo: Yup.string(),
 
             nameOnCard: Yup.string().when((_values, schema) => cartPage === 3 ? schema.required() : schema),
-            cardNumber: Yup.string().when((_values, schema) => cartPage === 3 ? schema.min(16, '').required() : schema),
-            cardCode: Yup.string().min(3, '').when((_values, schema) => cartPage === 3 ? schema.required() : schema),
-            expirationMonth: Yup.string().when((_values, schema) => cartPage === 3 ? schema.min(2, '').required() : schema),
-            expirationYear: Yup.string().when((_values, schema) => cartPage === 3 ? schema.min(2, '').required() : schema)
+            cardNumber: Yup.string().when((_values, schema) => cartPage === 3 ? schema.required() : schema),
+            cardCode: Yup.string().when((_values, schema) => cartPage === 3 ? schema.required() : schema),
+            expirationMonth: Yup.string().when((_values, schema) => cartPage === 3 ? schema.required() : schema),
+            expirationYear: Yup.string().when((_values, schema) => cartPage === 3 ? schema.required() : schema)
         }),
         onSubmit: (values) => {
             purchase({
