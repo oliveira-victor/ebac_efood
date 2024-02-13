@@ -18,7 +18,7 @@ import SubmitBtn from '../SubmitBtn'
 const Cart = () => {
     const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
     const [cartPage, setCartPage] = useState(1)
-    const [purchase, { isLoading, isError, data, isSuccess }] = usePurchaseMutation()
+    const [purchase, { isLoading, data, isSuccess }] = usePurchaseMutation()
 
     const dispatch = useDispatch()
 
@@ -80,14 +80,13 @@ const Cart = () => {
             houseNumber: Yup.string().required(),
             extraInfo: Yup.string(),
 
-            nameOnCard: Yup.string().when((values, schema) => cartPage === 3 ? schema.required() : schema),
-            cardNumber: Yup.string().when((values, schema) => cartPage === 3 ? schema.min(16, '').required() : schema),
-            cardCode: Yup.string().when((values, schema) => cartPage === 3 ? schema.min(3, '').required() : schema),
-            expirationMonth: Yup.string().when((values, schema) => cartPage === 3 ? schema.min(2, '').required() : schema),
-            expirationYear: Yup.string().when((values, schema) => cartPage === 3 ? schema.min(2, '').required() : schema)
+            nameOnCard: Yup.string().when((_values, schema) => cartPage === 3 ? schema.required() : schema),
+            cardNumber: Yup.string().when((_values, schema) => cartPage === 3 ? schema.min(16, '').required() : schema),
+            cardCode: Yup.string().min(3, '').when((_values, schema) => cartPage === 3 ? schema.required() : schema),
+            expirationMonth: Yup.string().when((_values, schema) => cartPage === 3 ? schema.min(2, '').required() : schema),
+            expirationYear: Yup.string().when((_values, schema) => cartPage === 3 ? schema.min(2, '').required() : schema)
         }),
         onSubmit: (values) => {
-            console.log(values)
             purchase({
                 delivery: {
                     receiver: values.fullName,
@@ -120,7 +119,6 @@ const Cart = () => {
 
     useEffect(() => {
         if (isSuccess) {
-            console.log('isSuccess')
             setCartPage(4)
             dispatch(clear())
         }
@@ -227,8 +225,6 @@ const Cart = () => {
                                 id='extraInfo'
                                 value={form.values.extraInfo}
                                 onChange={form.handleChange}
-                            /* onBlur={form.handleBlur}
-                            className={checkInputHasError('extraInfo') ? 'error' : ''} */
                             />
                             <ButtonsContainer>
                                 <ProceedBtn type='button' onClick={goToPayment}>Continuar com o pagamento</ProceedBtn>
