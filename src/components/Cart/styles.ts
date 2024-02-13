@@ -45,8 +45,6 @@ export const Total = styled.div`
     color: ${colors.secondaryColor};
 `
 
-// NEW
-
 export const ItemBox = styled.li`
 min-height: 100px;
     background-color: ${colors.secondaryColor};
@@ -83,4 +81,38 @@ export const ItemPrice = styled.span`
     font-weight: 400;
     display: block;
     margin-top: 16px;
+`
+
+export const Grid = styled.div`
+    display: grid;
+    grid-template-columns: 228px auto;
+    gap: 30px;
+`
+
+export const Form = styled.form`
+    font-size: 14px;
+    font-weight: 700;
+    color: ${colors.secondaryColor};
+
+    input {
+        width: 100%;
+        height: 32px;
+        background-color: ${colors.secondaryColor};
+        color: #4B4B4B;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 8px;
+        margin-bottom: 8px;
+        outline-color: transparent;
+        border: 2px solid transparent;
+
+        &.error {
+            border: 2px solid red;
+        }
+    }
+`
+
+export const Label = styled.label`
+    margin-bottom: 8px;
+    display: block;
 `

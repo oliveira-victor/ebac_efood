@@ -46,35 +46,11 @@ export const Button = styled.button`
     border: none;
 `
 
-export const Form = styled.form`
-    font-size: 14px;
-    font-weight: 700;
-    color: ${colors.secondaryColor};
-`
-
 export const FormTitle = styled.h3`
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 16px;
     color: ${colors.secondaryColor};
-`
-
-export const Label = styled.label`
-    margin-bottom: 8px;
-    display: block;
-`
-
-export const Input = styled.input`
-    width: 100%;
-    height: 32px;
-    background-color: ${colors.secondaryColor};
-    color: #4B4B4B;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 8px;
-    margin-bottom: 8px;
-    border: none;
-    outline-color: transparent;
 `
 
 export const ButtonsContainer = styled.div`

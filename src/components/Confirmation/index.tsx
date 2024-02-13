@@ -2,10 +2,11 @@ import { FormTitle } from "../../styles"
 
 import * as S from './styles'
 
-const PlacedOrder = () => {
+const Confirmation = ({ data }: any) => {
+
     return (
         <>
-            <FormTitle>Pedido realizado - 5524863</FormTitle>
+            <FormTitle>Pedido realizado - {data?.orderId}</FormTitle>
             <S.Paragraph>
                 Estamos felizes em informar que seu pedido já está em processo de preparação e, em breve, será entregue no endereço fornecido.
             </S.Paragraph>
@@ -18,9 +19,8 @@ const PlacedOrder = () => {
             <S.Paragraph>
                 Esperamos que desfrute de uma deliciosa e agradável experiência gastronômica. Bom apetite!
             </S.Paragraph>
-            <button title="Concluir" />
         </>
     )
 }
 
-export default PlacedOrder
+export default Confirmation
