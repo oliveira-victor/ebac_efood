@@ -20,6 +20,7 @@ export const CartOverlay = styled.div`
 `
 
 export const CartContainer = styled.aside`
+    max-width: 90%;
     width: 360px;
     height: 100%;
     padding: 32px 8px;
@@ -34,6 +35,8 @@ export const ItemsList = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 16px;
+    max-height: 74vh;
+    overflow-y: scroll;
 `
 
 export const Total = styled.div`

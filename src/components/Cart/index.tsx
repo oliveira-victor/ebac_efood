@@ -136,7 +136,7 @@ const Cart = () => {
 
                     {items.length > 0 && cartPage === 1 ? (
                         <>
-                            <S.ItemsList className={items.length >= 7 ? 'addScroll' : ''}>
+                            <S.ItemsList>
                                 {items.map((item) => (
                                     <S.ItemBox key={item.id}>
                                         <S.ItemImg style={{ backgroundImage: `url(${item.foto})` }}></S.ItemImg>
